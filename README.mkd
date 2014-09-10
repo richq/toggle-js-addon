@@ -1,9 +1,12 @@
-
 This simple Firefox for Android extension adds a checkbox menu item to the
 Tools menu that shows the state of the "javascript.enabled" global setting.
 Selecting the menu item toggles the enabled status.
+
+[Install it from the Firefox for Android Add-ons site.][addon]
 
 Having JavaScript disabled is convenient when you are on a slow mobile network
 and the site does not require JavaScript to view the main content.
 
 ![image](assets/screenshot-clipped.png)
+
+ [addon]: https://addons.mozilla.org/en-US/android/addon/toggle-javascript-enabled
