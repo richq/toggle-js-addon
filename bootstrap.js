@@ -101,9 +101,9 @@ var menuId;
 var uuid = null;
 
 function toggleJavaScript(window) {
-  var isEnabled = !branch.getBoolPref("enabled");
-  window.NativeWindow.menu.update(menuId, { checked: isEnabled });
-  branch.setBoolPref("enabled", isEnabled);
+  var isEnabled = branch.getBoolPref("enabled");
+  branch.setBoolPref("enabled", !isEnabled);
+  window.NativeWindow.menu.update(menuId, { checked: !isEnabled });
   addAction(window);
 }
 
@@ -115,7 +115,6 @@ function addAction(window) {
     title: "Toggle JS",
     clickCallback: function() {
       toggleJavaScript(window);
-      var isEnabled = !branch.getBoolPref("enabled");
     }
   });
 }
@@ -140,7 +139,7 @@ function loadIntoWindow(window) {
 }
 
 function getIcon() {
-  var isEnabled = !branch.getBoolPref("enabled");
+  var isEnabled = branch.getBoolPref("enabled");
   return isEnabled ? ENABLED_ICON : DISABLED_ICON;
 }
 
