@@ -5,7 +5,7 @@ import urllib
 def img2base64(img):
     return open(img, "rb").read().encode("base64").replace('\n', '')
 
-disabled_base64 = img2base64("assets/no-js.png")
+disabled_base64 = img2base64("assets/jsdisabled.png")
 enabled_base64 = img2base64("assets/jsenabled.png")
 
 
