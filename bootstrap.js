@@ -88,18 +88,41 @@ var branch = Services.prefs.getBranch("javascript.");
 var menuId;
 var uuid = null;
 
+function requestReload(window) {
+  let buttons = [
+    {
+      label: "Yes, reload",
+      callback: function() {
+        // reload current tab, if it is not emptyness or the special 'about:home'
+        var activ = window.BrowserApp.selectedTab;
+        if (activ != null && activ != undefined && activ.url != 'about:home')
+          activ.browser.reload();
+      }
+    },
+    {
+      label: "No",
+      callback: function() {}
+    }
+  ];
+  let message = "Reload the current tab?";
+  let opts = {
+    persistence: 1,
+    timeout: 3000
+  };
+
+  window.NativeWindow.doorhanger.show(message, "request-reload", buttons,
+                                      window.BrowserApp.selectedTab.id,
+                                      opts);
+}
+
 function toggleJavaScript(window) {
   var isEnabled = branch.getBoolPref("enabled");
   var newEnabled = !isEnabled;
   branch.setBoolPref("enabled", newEnabled);
   window.NativeWindow.menu.update(menuId, { checked: newEnabled });
   addAction(window);
-  if (newEnabled) {
-    // reload current tab, if it is not emptyness or a special like 'about:home'
-    var activ = window.BrowserApp.selectedTab;
-    if (activ != null && activ != undefined && activ.url != 'about:home')
-      activ.browser.reload();
-  }
+  if (newEnabled)
+    requestReload(window);
 }
 
 function addAction(window) {
