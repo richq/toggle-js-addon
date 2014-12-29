@@ -5,20 +5,6 @@ const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 Cu.import('resource://gre/modules/Services.jsm');
 
-function loadIntoWindow(window) {
-  if (!window)
-    return;
-  // Add any persistent UI elements
-  // Perform any other initialization
-}
-
-function unloadFromWindow(window) {
-  if (!window)
-    return;
-  // Remove any persistent UI elements
-  // Perform any other cleanup
-}
-
 var windowListener = {
   onOpenWindow: function(aWindow) {
     // Wait for the window to finish loading
