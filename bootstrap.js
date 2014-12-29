@@ -90,9 +90,16 @@ var uuid = null;
 
 function toggleJavaScript(window) {
   var isEnabled = branch.getBoolPref("enabled");
-  branch.setBoolPref("enabled", !isEnabled);
-  window.NativeWindow.menu.update(menuId, { checked: !isEnabled });
+  var newEnabled = !isEnabled;
+  branch.setBoolPref("enabled", newEnabled);
+  window.NativeWindow.menu.update(menuId, { checked: newEnabled });
   addAction(window);
+  if (newEnabled) {
+    // reload current tab, if it is not emptyness or a special like 'about:home'
+    var activ = window.BrowserApp.selectedTab;
+    if (activ != null && activ != undefined && activ.url != 'about:home')
+      activ.browser.reload();
+  }
 }
 
 function addAction(window) {
