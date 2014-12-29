@@ -1,10 +1,15 @@
 all: disable-javascript.xpi
 
-disable-javascript.xpi: bootstrap.js install.rdf
-	zip $@ $^ icon.png
+XPI := disable-javascript.xpi
+
+$(XPI): bootstrap.js install.rdf icon.png
+	zip $@ $^
 
 
-install: disable-javascript.xpi
-	adb push disable-javascript.xpi /mnt/sdcard/
-	adb shell am start -a android.intent.action.VIEW -c android.intent.category.DEFAULT -d file:///mnt/sdcard/disable-javascript.xpi -n org.mozilla.firefox/.App
+install: $(XPI)
+	adb push $(XPI) /mnt/sdcard/
+	adb shell am start -a android.intent.action.VIEW \
+		-c android.intent.category.DEFAULT \
+		-d file:///mnt/sdcard/$(XPI) \
+		-n org.mozilla.firefox/.App
 
