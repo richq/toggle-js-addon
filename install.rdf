@@ -3,10 +3,10 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>togglejs@quirk.es</em:id>
         <em:type>2</em:type>
-        <em:name>Toggle JavaScript Enabled Add-on</em:name>
+        <em:name>Toggle JavaScript Enabled</em:name>
         <em:version>1.1</em:version>
         <em:bootstrap>true</em:bootstrap>
-        <em:description>Toggle JavaScript Enabled add-on for Firefox for Android (Native)</em:description>
+        <em:description>Toggle whether JavaScript is enabled globally or not. Adds a menu entry and an icon to the URL/title bar.</em:description>
         <em:creator>Richard Quirk</em:creator>
 
         <!-- Mobile Native -->
