@@ -2,7 +2,9 @@ all: disable-javascript.xpi
 
 XPI := disable-javascript.xpi
 
-$(XPI): bootstrap.js install.rdf icon.png
+locales := $(wildcard locale/*/*)
+
+$(XPI): bootstrap.js install.rdf icon.png chrome.manifest $(locales)
 	zip $@ $^
 
 

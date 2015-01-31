@@ -81,6 +81,11 @@ function uninstall(aData, aReason) {}
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("resource://gre/modules/PageActions.jsm");
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+
+XPCOMUtils.defineLazyGetter(this, "Strings", function() {
+  return Services.strings.createBundle("chrome://togglejavascript/locale/togglejavascript.properties");
+});
 
 // get javascript.enabled pref:
 var branch = Services.prefs.getBranch("javascript.");
@@ -102,7 +107,7 @@ function requestReload(window) {
     return;
   let buttons = [
     {
-      label: "Yes, reload",
+      label: Strings.GetStringFromName("yes.reload"),
       callback: function() {
         // reload current tab, if it is not emptyness or the special 'about:home'
         if (canReload(window))
@@ -110,11 +115,11 @@ function requestReload(window) {
       }
     },
     {
-      label: "No",
+      label: Strings.GetStringFromName("no"),
       callback: function() {}
     }
   ];
-  let message = "Reload the current tab?";
+  let message = Strings.GetStringFromName("question.reload");
   let opts = {
     persistence: 1,
     timeout: 3000
@@ -168,7 +173,8 @@ function loadIntoWindow(window) {
 
 function getTitle() {
   var isEnabled = branch.getBoolPref("enabled");
-  return "Toggle JS" + (isEnabled ? " (ON)" : " (OFF)");
+  var enabled = Strings.GetStringFromName(isEnabled ? "menu.on" : "menu.off");
+  return Strings.GetStringFromName("menu.title") + " " + enabled;
 }
 
 function getIcon() {
