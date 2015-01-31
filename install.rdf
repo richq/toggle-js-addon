@@ -15,6 +15,13 @@
             <em:description>Activar o desactivar JavaScript de forma global en el navegador. Añade una opción al menú y un icono en la barra del titulo/URL.</em:description>
           </Description>
         </em:localized>
+        <em:localized>
+          <Description>
+            <em:locale>de</em:locale>
+            <em:name>Ändern Sie JavaScript aktivieren</em:name>
+            <em:description>Aktivieren oder Deaktivieren von JavaScript global im Browser. Fügt eine Option in das Menü und ein Symbol in der Titelzeile / URL</em:description>
+          </Description>
+        </em:localized>
 
         <!-- Mobile Native -->
         <em:targetApplication>
