@@ -8,6 +8,13 @@
         <em:bootstrap>true</em:bootstrap>
         <em:description>Toggle whether JavaScript is enabled globally or not. Adds a menu entry and an icon to the URL/title bar.</em:description>
         <em:creator>Richard Quirk</em:creator>
+        <em:localized>
+          <Description>
+            <em:locale>es-ES</em:locale>
+            <em:name>Alternar la Activación de JavaScript</em:name>
+            <em:description>Activa o desactiva JavaScript de forma global en el navegador Añade una opción al menú y un icono en la barra del titulo/URL.</em:description>
+          </Description>
+        </em:localized>
 
         <!-- Mobile Native -->
         <em:targetApplication>
