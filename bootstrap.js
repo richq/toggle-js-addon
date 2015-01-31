@@ -88,15 +88,25 @@ var branch = Services.prefs.getBranch("javascript.");
 var menuId;
 var uuid = null;
 
+function canReload(window) {
+  try {
+    var location = "" + window.BrowserApp.selectedTab.window.location;
+    return !location.startsWith('about:');
+  } catch (err) {
+    return false;
+  }
+}
+
 function requestReload(window) {
+  if (!canReload(window))
+    return;
   let buttons = [
     {
       label: "Yes, reload",
       callback: function() {
         // reload current tab, if it is not emptyness or the special 'about:home'
-        var activ = window.BrowserApp.selectedTab;
-        if (activ != null && activ != undefined && activ.url != 'about:home')
-          activ.browser.reload();
+        if (canReload(window))
+          window.BrowserApp.selectedTab.browser.reload();
       }
     },
     {
