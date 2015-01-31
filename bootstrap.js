@@ -130,7 +130,7 @@ function addAction(window) {
     PageActions.remove(uuid);
   uuid = PageActions.add({
     icon: getIcon(),
-    title: "Toggle JS",
+    title: getTitle(),
     clickCallback: function() {
       toggleJavaScript(window);
     }
@@ -154,6 +154,11 @@ function loadIntoWindow(window) {
   window.NativeWindow.menu.update(menuId,
     { checked: branch.getBoolPref("enabled") });
 
+}
+
+function getTitle() {
+  var isEnabled = branch.getBoolPref("enabled");
+  return "Toggle JS" + (isEnabled ? " (ON)" : " (OFF)");
 }
 
 function getIcon() {
