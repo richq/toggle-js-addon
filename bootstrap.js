@@ -108,16 +108,13 @@ function requestReload(window) {
   let buttons = [
     {
       label: Strings.GetStringFromName("yes.reload"),
+      positive: true,
       callback: function() {
         // reload current tab, if it is not emptyness or the special 'about:home'
         if (canReload(window))
           window.BrowserApp.selectedTab.browser.reload();
       }
     },
-    {
-      label: Strings.GetStringFromName("no"),
-      callback: function() {}
-    }
   ];
   let message = Strings.GetStringFromName("question.reload");
   let opts = {
