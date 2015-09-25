@@ -9,4 +9,6 @@ and the site does not require JavaScript to view the main content.
 
 ![image](assets/screenshot-clipped.png)
 
+![image](assets/screenshot-reload-clipped.png)
+
  [addon]: https://addons.mozilla.org/en-US/android/addon/toggle-javascript-enabled
